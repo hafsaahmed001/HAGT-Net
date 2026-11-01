@@ -1,0 +1,39 @@
+# HAGT-Net training configuration — E-Gait emotion recognition
+
+# Data
+data_dir: ./data/egait
+target_len: 64           # frames per sequence (uniform-sampled or zero-padded)
+split_seed: 42            # fixes the train/val/test partition
+num_workers: 2
+
+# Graph
+com: 0                     # center-of-mass joint index for the hierarchy (0 = Root)
+
+# Model
+num_class: 4
+num_point: 16
+num_person: 1
+in_channels: 3
+drop_out: 0
+topology_rel_reduction: 4  # bottleneck ratio inside AdaptiveTopologyConv
+aff_dim: null               # auto-detected from the dataset if left null
+
+# Optimization
+batch_size: 32
+num_epoch: 100
+base_lr: 0.1
+weight_decay: 0.0004
+warmup_epoch: 5
+optimizer: sgd
+momentum: 0.9
+nesterov: true
+lr_schedule: cosine
+
+# Augmentation
+random_rot: true
+rot_theta: 0.3
+
+# Misc
+seed: 42
+results_dir: ./results
+exp_name: hagtnet_egait_com0

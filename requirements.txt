@@ -1,0 +1,6 @@
+torch>=1.12
+numpy
+h5py
+scikit-learn
+einops
+PyYAML
